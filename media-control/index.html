@@ -8,5 +8,16 @@
 </head>
 <body>
     
+    <script>
+        const socketHost = 'http://192.168.0.201:8899';
+        const socket = io(socketHost, {
+            autoConnect: true,
+            transports: ["websocket"],
+            secure: true,
+            auth: { "type": "klapeks-win" },
+        });
+
+
+    </script>
 </body>
 </html>

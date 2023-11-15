@@ -1,12 +1,19 @@
-import mediaService from "./media.service";
-import utils from './utils';
+import express from './express/express';
+import websocket from "./websocket";
+import MRouter from "./express/mrouter";
+
+const route = new MRouter();
+route.get("/", () => "pong");
 
 async function start() {
-    const info = await mediaService.getCurrent();
-    console.log("Current info:", info);
-
-    await utils.timeout(3000000);
+    const server = await express.start({
+        port: 8899, 
+        prefix: "/api",
+        routes: {
+            "ping": route
+        }
+    });
+    websocket.attach(server);
 }
-
 
 start();
