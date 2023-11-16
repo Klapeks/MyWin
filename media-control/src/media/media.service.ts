@@ -100,6 +100,11 @@ const mediaService = {
         const current = sessions.getCurrentSession();
         current.trySkipPreviousAsync(_);
     },
+    async stop() {
+        const sessions = await requestAsync();
+        const current = sessions.getCurrentSession();
+        current.tryStopAsync(_);
+    },
 }
 
 export default mediaService;
